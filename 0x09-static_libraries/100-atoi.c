@@ -29,7 +29,7 @@ int _atoi(char *s)
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		/*Return max or min value if integer overflows*/
-		if (result > INT_MAX / 10 || result < INT_MIN /10)
+		if (result > INT_MAX / 10 || result < INT_MIN / 10)
 			return ((sign == 1) ? INT_MAX : INT_MIN);
 
 		result = (result * 10) + (s[i] - '0');

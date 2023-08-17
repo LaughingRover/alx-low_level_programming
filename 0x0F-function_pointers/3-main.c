@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	int num1, num2, result;
 	char *op = "+-*/%";
 	char *operator;
-	operation_function func;
+	operation_function op_func;
 
 	if (argc != 4)
 	{
@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
 	}
 
 	/*Get the result of the calculation*/
-	func = get_op_func(operator);
-	result = func(num1, num2);
+	op_func = get_op_func(operator);
+	result = op_func(num1, num2);
 
 	printf("%d\n", result);
 

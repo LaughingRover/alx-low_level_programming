@@ -1,9 +1,10 @@
 #include <stdarg.h>
 #include <stdio.h>
+
 #define NULL ((void *)0)
 
 /**
- * print_numbers - prints numbers followed by a newline
+ * print_strings - prints strings followed by a newline
  * @separator: string to be printed between numbers
  * @n: number of integers passed to the function
  *
@@ -26,10 +27,11 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 		printf("%s", s);
 
-		if ((i != (n - 1)) && separator != NULL)
+		if (i < (n - 1) && separator)
 			printf("%s", separator);
 	}
 
+	va_end(args);
 	putchar('\n');
 }
 

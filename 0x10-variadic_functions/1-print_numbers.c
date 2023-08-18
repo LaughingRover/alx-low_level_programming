@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
+
 #define NULL ((void *)0)
 
 /**
@@ -11,21 +12,22 @@
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	int i;
-	int num;
+	unsigned int i = 0;
 	va_list args;
 
 	va_start(args, n);
 
-	for (i = 0; i < n; i++)
+	while (i < n)
 	{
-		num = va_arg(args, int);
-		printf("%d", num);
+		printf("%d", va_arg(args, int));
 
-		if ((i != (n - 1)) && separator != NULL)
+		/*Check if separator is NULL*/
+		if ((i < (n - 1)) && separator)
 			printf("%s", separator);
+		i++;
 	}
 
+	va_end(args);
 	putchar('\n');
 }
 

@@ -12,7 +12,7 @@
  */
 void print_all(const char * const format, ...)
 {
-	char *format_list = "cifs", *s;
+	char *format_list = "cifs", *str;
 	char *is_valid_format;
 	int num_args, i = 0;
 	va_list args;
@@ -25,8 +25,6 @@ void print_all(const char * const format, ...)
 
 	while (i < num_args)
 	{
-		is_valid_format = strchr(format_list, format[i]);
-
 		switch (format[i])
 		{
 			case 'c':
@@ -39,14 +37,15 @@ void print_all(const char * const format, ...)
 				printf("%f", va_arg(args, double));
 				break;
 			case 's':
-				s = va_arg(args, char *);
-				(s == NULL) ? printf("(nil)") : printf("%s", s);
-				break;
-			default:
+				str = va_arg(args, char *);
+				(str) ? printf("%s", str) : printf("(nil)");
 				break;
 		}
 
-		(i < (num_args - 1) && is_valid_format) ? printf(", ") : 0;
+		is_valid_format = strchr(format_list, format[i]);
+
+		if (i < (num_args - 1) && is_valid_format)
+			printf(", ");
 		i++;
 	}
 
